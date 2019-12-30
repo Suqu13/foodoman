@@ -87,7 +87,7 @@ class _FloatingButtonState extends State<FloatingButton>
         heroTag: button.heroTag,
         onPressed: () => button.onPressed(),
         tooltip: button.tooltip,
-        child: Icon(button.icon),
+        child: Icon(button.icon, size: 20.0),
       ),
     );
   }

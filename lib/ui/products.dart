@@ -31,10 +31,7 @@ class Products extends StatelessWidget {
       body: Container(
         child: ListView.builder(
             itemCount: productsList.length,
-            itemBuilder: (context, i) => MainTile(
-                text: productsList[i].name,
-                onClick: () => print('Produty'),
-                icon: FontAwesomeIcons.boxes)),
+            itemBuilder: (context, i) => ProductTile(product: productsList[i])),
         decoration: BoxDecoration(
             gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -51,55 +48,63 @@ class Products extends StatelessWidget {
   }
 }
 
-class MainTile extends StatefulWidget {
-  final String text;
-  final Function onClick;
-  final IconData icon;
+class ProductTile extends StatefulWidget {
+  final Product product;
 
-  MainTile({@required this.text, this.onClick, this.icon});
+  ProductTile({@required this.product});
 
   @override
-  State<StatefulWidget> createState() => MainTileState();
+  State<StatefulWidget> createState() => ProductTileState();
 }
 
-class MainTileState extends State<MainTile> {
-  double _elevation = 1.0;
+class ProductTileState extends State<ProductTile> {
+  double _elevation = 10.0;
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: () => setState(() {
-          _elevation = 10.0;
-        }),
         child: Card(
           margin: EdgeInsets.all(10),
           elevation: _elevation,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-          child: AnimatedContainer(
-              duration: Duration(milliseconds: 300),
-              curve: Curves.easeInBack,
-              alignment: Alignment(0.0, 0.0),
-              width: 140,
-              height: 190,
+          child: InkWell(
+              onTap: () => setState(() {
+                    _elevation = 10.0;
+                  }),
+              splashColor: Colors.indigo[500],
+              borderRadius: BorderRadius.circular(15.0),
               child: Center(
-                child: Column(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(String.fromCharCode(widget.icon.codePoint),
-                        style: TextStyle(
-                            color: Colors.grey[300],
-                            fontSize: 80.0,
-                            fontFamily: widget.icon.fontFamily,
-                            package: widget.icon.fontPackage)),
+                    Center(
+                        child: FadeInImage.assetNetwork(
+                            height: 100,
+                            width: 100,
+                            placeholder: '../assets/question_mark.jpg',
+                            image: widget.product.imageUrl)),
                     Container(
-                      padding: EdgeInsets.all(20),
-                      child: Text(
-                        widget.text.toUpperCase(),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.grey[500],
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold),
+                      padding: EdgeInsets.all(40),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            widget.product.name.toUpperCase(),
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: Colors.grey[500],
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '${widget.product.units} szt.',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: Colors.grey[500],
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
                     ),
                   ],
