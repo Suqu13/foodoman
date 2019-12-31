@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodoman/external/products_dictionary.dart';
+import 'package:foodoman/ui/custom_image.dart';
+import 'package:foodoman/ui/product_details.dart';
 
 import 'floating_button.dart';
 
@@ -68,21 +70,19 @@ class ProductTileState extends State<ProductTile> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
           child: InkWell(
-              onTap: () => setState(() {
-                    _elevation = 10.0;
-                  }),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProductDetails())),
               splashColor: Colors.indigo[500],
               borderRadius: BorderRadius.circular(15.0),
               child: Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Center(
-                        child: FadeInImage.assetNetwork(
-                            height: 100,
-                            width: 100,
-                            placeholder: '../assets/question_mark.jpg',
-                            image: widget.product.imageUrl)),
+                    CustomImage(
+                      image: widget.product.imageUrl,
+                      height: 100,
+                      width: 100,
+                    ),
                     Container(
                       padding: EdgeInsets.all(40),
                       child: Column(
