@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodoman/bloc/locator.dart';
-import 'package:foodoman/ui/main_menu.dart';
-import 'ui/products_list.dart';
+import 'package:foodoman/ui/pages/main_menu.dart';
+import 'ui/pages/products_list.dart';
 
 void main() async {
   setupLocator();
