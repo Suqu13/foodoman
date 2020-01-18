@@ -64,7 +64,7 @@ class ProductLocalizationListBodyState
           return Scaffold(
             body: CustomBackgroundContainer(
               child: ListView.builder(
-                  padding: EdgeInsets.only(top: 40.0, left: 10, right: 10),
+                  padding: EdgeInsets.only(top: 40.0, bottom: 40, left: 10, right: 10),
                   itemCount: productsSets.data.length,
                   itemBuilder: (context, i) => LocalizationTile(
                       productSet: productsSets.data[i],
