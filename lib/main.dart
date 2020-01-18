@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:foodoman/bloc/locator.dart';
 import 'package:foodoman/ui/main_menu.dart';
-import 'package:foodoman/ui/products.dart';
+import 'ui/products_list.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  setupLocator();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

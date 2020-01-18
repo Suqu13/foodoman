@@ -13,21 +13,25 @@ class CustomImage extends StatelessWidget {
   Widget build(BuildContext context) => Stack(
         children: <Widget>[
           Container(
+            margin: EdgeInsets.all(8.0),
             height: height,
             width: width,
             child: Center(
               child: CircularProgressIndicator(),
             ),
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Center(
-              child: FadeInImage.memoryNetwork(
-                  height: height,
-                  width: width,
-                  fit: BoxFit.cover,
-                  placeholder: kTransparentImage,
-                  image: image),
+          Container(
+            margin: EdgeInsets.all(8.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Center(
+                child: FadeInImage.memoryNetwork(
+                    height: height,
+                    width: width,
+                    fit: BoxFit.cover,
+                    placeholder: kTransparentImage,
+                    image: image),
+              ),
             ),
           ),
         ],
