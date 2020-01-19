@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class CustomTextFiled extends StatelessWidget {
+class CustomTextFieldForm extends StatelessWidget {
   final String labelText;
   final bool numbersOnly;
   final TextEditingController controller;
 
-  CustomTextFiled(
-      {@required this.labelText, this.numbersOnly = false, this.controller});
+  CustomTextFieldForm(
+      {@required this.labelText, this.numbersOnly = false, this.controller, key}) : super(key: key);
 
   isNumeric(String value) => double.tryParse(value) != null;
 

@@ -32,13 +32,13 @@ class ProductDetailsBody extends StatefulWidget {
   final buttons = (context, Product product,
           Function(int) afterNavigateToProductDetailsEdition) =>
       [
-        CustomFloatingButtonItem(
+        CustomSecondaryFloatingButton(
           onPressed: () => print('priorities'),
           heroTag: 'priorities',
           tooltip: 'priorities',
           icon: FontAwesomeIcons.exclamation,
         ),
-        CustomFloatingButtonItem(
+        CustomSecondaryFloatingButton(
           onPressed: () => Alert(
               context: context,
               title: 'Jesteś pewien, że chcesz usunąć produkt?',
@@ -61,7 +61,7 @@ class ProductDetailsBody extends StatefulWidget {
           tooltip: 'remove',
           icon: FontAwesomeIcons.trash,
         ),
-        CustomFloatingButtonItem(
+        CustomSecondaryFloatingButton(
           onPressed: () async {
             await Navigator.push(
                 context,
@@ -73,8 +73,9 @@ class ProductDetailsBody extends StatefulWidget {
           heroTag: 'edit',
           tooltip: 'edit',
           icon: FontAwesomeIcons.pen,
+          key: Key('editSecondaryFloatingButton'),
         ),
-        CustomFloatingButtonItem(
+        CustomSecondaryFloatingButton(
           onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
@@ -111,12 +112,19 @@ class ProductDetailsBodyState extends State<ProductDetailsBody> {
       builder: (BuildContext context, AsyncSnapshot<Product> product) {
         if (product.hasData) {
           return Scaffold(
-              floatingActionButton: CustomFloatingButton(widget.buttons(context,
-                  product.data, (id) => productsBloc.fetchProductById(id: id))),
+              appBar: AppBar(title: Text("Szczegóły")),
+              floatingActionButton: CustomAnimatedFloatingButton(
+                buttons: widget.buttons(context, product.data,
+                    (id) => productsBloc.fetchProductById(id: id)),
+                key: Key('primaryFloatingButton'),
+              ),
               body: CustomBackgroundContainer(
                   child: ProductDetailsBodyContent(product: product.data)));
         } else {
-          return CustomBackgroundContainer(child: Center(child: CircularProgressIndicator()));
+          return Scaffold(
+              appBar: AppBar(),
+        body: CustomBackgroundContainer(
+              child: Center(child: CircularProgressIndicator())));
         }
       });
 }
@@ -128,13 +136,14 @@ class ProductDetailsBodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListView(
-        padding: EdgeInsets.only(top: 30.0, bottom: 80, left: 10, right: 10),
+        padding: EdgeInsets.only(top: 10.0, bottom: 80, left: 10, right: 10),
         children: <Widget>[
           Center(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(product.name,
-                  style: TextStyle(color: Colors.grey[500], fontSize: 30)),
+                  key: Key('productsDetailsName'),
+                  style: TextStyle(color: Colors.white, fontSize: 30)),
             ),
           ),
           Row(

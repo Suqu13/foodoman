@@ -11,11 +11,12 @@ class CustomBackgroundContainer extends StatelessWidget {
           gradient: LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
-        stops: [0.7, 0.9, 1.0],
+        stops: [0.1, 0.2, 0.6],
         colors: [
-          Colors.grey[100],
-          Colors.indigo[400],
           Colors.indigo[600],
+          Colors.indigo[400],
+
+          Colors.grey[100],
         ],
       )),
       child: child);

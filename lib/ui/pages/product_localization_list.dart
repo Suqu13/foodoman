@@ -17,9 +17,7 @@ class ProductLocalizationList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ProductLocalizationListBody(
-      productId: productId,
-      priorityId: priorityId,
-      localizeAll: localizeAll);
+      productId: productId, priorityId: priorityId, localizeAll: localizeAll);
 }
 
 class ProductLocalizationListBody extends StatefulWidget {
@@ -56,27 +54,28 @@ class ProductLocalizationListBodyState
   }
 
   @override
-  Widget build(BuildContext context) => StreamBuilder(
-      stream: _productsSetsBloc.productsSets,
-      builder:
-          (BuildContext context, AsyncSnapshot<List<ProductSet>> productsSets) {
-        if (productsSets.hasData) {
-          return Scaffold(
-            body: CustomBackgroundContainer(
-              child: ListView.builder(
-                  padding: EdgeInsets.only(top: 40.0, bottom: 40, left: 10, right: 10),
-                  itemCount: productsSets.data.length,
-                  itemBuilder: (context, i) => LocalizationTile(
-                      productSet: productsSets.data[i],
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
-                      vsync: this)),
-            ),
-          );
-        } else {
-          return CustomBackgroundContainer(child: Center(child: CircularProgressIndicator()));
-        }
-      });
+  Widget build(BuildContext context) => Scaffold(
+      appBar: AppBar(title: Text("Lokalizacja")),
+      body: CustomBackgroundContainer(
+          child: StreamBuilder(
+              stream: _productsSetsBloc.productsSets,
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<ProductSet>> productsSets) {
+                if (productsSets.hasData) {
+                  return ListView.builder(
+                      padding: EdgeInsets.only(
+                          top: 10.0, bottom: 10, left: 10, right: 10),
+                      itemCount: productsSets.data.length,
+                      itemBuilder: (context, i) => LocalizationTile(
+                          productSet: productsSets.data[i],
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                          vsync: this));
+                } else {
+                  return CustomBackgroundContainer(
+                      child: Center(child: CircularProgressIndicator()));
+                }
+              })));
 }
 
 class LocalizationTile extends StatelessWidget {

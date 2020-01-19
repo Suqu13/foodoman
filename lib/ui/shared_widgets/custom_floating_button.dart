@@ -1,29 +1,70 @@
 import 'package:flutter/material.dart';
 
-class CustomFloatingButtonItem {
+class CustomSecondaryFloatingButton extends StatelessWidget {
   final Function onPressed;
   final String heroTag;
   final String tooltip;
   final IconData icon;
 
-  CustomFloatingButtonItem({
-    this.onPressed,
-    this.heroTag,
-    this.tooltip,
-    this.icon,
-  });
-}
-
-class CustomFloatingButton extends StatefulWidget {
-  final List<CustomFloatingButtonItem> _floatingButtons;
-
-  CustomFloatingButton(this._floatingButtons);
+  CustomSecondaryFloatingButton(
+      {this.onPressed, this.heroTag, this.tooltip, this.icon, key})
+      : super(key: key);
 
   @override
-  _CustomFloatingButtonState createState() => _CustomFloatingButtonState();
+  Widget build(BuildContext context) =>
+      Container(
+        child: FloatingActionButton(
+          backgroundColor: Colors.grey[600],
+          heroTag: heroTag,
+          onPressed: () => onPressed(),
+          tooltip: tooltip,
+          child: Icon(icon, size: 20.0),
+          key: null,
+        ),
+      );
 }
 
-class _CustomFloatingButtonState extends State<CustomFloatingButton>
+class CustomPrimaryFloatingButton extends StatelessWidget {
+  final Function onPressed;
+  final Animation animation;
+  final AnimatedIconData animatedIcon;
+
+  CustomPrimaryFloatingButton(
+      {@required this.onPressed, this.animation, this.animatedIcon, key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) =>
+      FloatingActionButton(
+          onPressed: onPressed,
+          child: AnimatedIcon(
+            icon: animatedIcon,
+            progress: animation,
+          ));
+}
+
+
+
+class CustomAnimatedFloatingButton extends StatelessWidget {
+  final List<CustomSecondaryFloatingButton> buttons;
+
+  CustomAnimatedFloatingButton({@required this.buttons, key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => _CustomAnimatedFloatingButtonStateful(buttons: buttons, key: key,);
+}
+
+class _CustomAnimatedFloatingButtonStateful extends StatefulWidget {
+  final List<CustomSecondaryFloatingButton> buttons;
+
+  _CustomAnimatedFloatingButtonStateful({@required this.buttons, key}) : super(key: key);
+
+  @override
+  _CustomAnimatedFloatingButtonState createState() =>
+      _CustomAnimatedFloatingButtonState();
+}
+
+class _CustomAnimatedFloatingButtonState extends State<_CustomAnimatedFloatingButtonStateful>
     with SingleTickerProviderStateMixin {
   bool isOpened = false;
   AnimationController _animationController;
@@ -35,10 +76,10 @@ class _CustomFloatingButtonState extends State<CustomFloatingButton>
   @override
   initState() {
     _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300))
-          ..addListener(() {
-            setState(() {});
-          });
+    AnimationController(vsync: this, duration: Duration(milliseconds: 300))
+      ..addListener(() {
+        setState(() {});
+      });
     _animateIcon =
         Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
     _translateButton = Tween<double>(
@@ -66,53 +107,34 @@ class _CustomFloatingButtonState extends State<CustomFloatingButton>
     isOpened = !isOpened;
   }
 
-  Widget createFloatingButton(CustomFloatingButtonItem button) {
-    return Container(
-      child: FloatingActionButton(
-        backgroundColor: Colors.grey[600],
-        heroTag: button.heroTag,
-        onPressed: () => button.onPressed(),
-        tooltip: button.tooltip,
-        child: Icon(button.icon, size: 20.0),
-      ),
-    );
-  }
-
-  List<Widget> createFloatingButtonsList(
-      List<CustomFloatingButtonItem> buttons) {
+  List<Widget> createCustomSecondaryFloatingButtonsList(
+      List<CustomSecondaryFloatingButton> buttons) {
     return buttons
         .asMap()
-        .map((index, button) => MapEntry(
-              index,
-              Transform(
-                transform: Matrix4.translationValues(
-                  0.0,
-                  _translateButton.value * (index + 1),
-                  0.0,
-                ),
-                child: createFloatingButton(button),
-              ),
-            ))
+        .map((index, button) =>
+        MapEntry(
+          index,
+          Transform(
+            transform: Matrix4.translationValues(
+              0.0,
+              _translateButton.value * (index + 1),
+              0.0,
+            ),
+            child: button,
+          ),
+        ))
         .values
         .toList()
         .reversed
         .toList();
   }
 
-  Widget mainFloatingButton() {
-    return FloatingActionButton(
-        onPressed: animate,
-        child: AnimatedIcon(
-          icon: AnimatedIcons.menu_close,
-          progress: _animateIcon,
-        ));
-  }
-
   @override
   Widget build(BuildContext context) {
-    List<Widget> columnWidgets =
-        List.from(createFloatingButtonsList(widget._floatingButtons))
-          ..add(mainFloatingButton());
+    List<Widget> columnWidgets = List.from(
+        createCustomSecondaryFloatingButtonsList(widget.buttons))
+      ..add(CustomPrimaryFloatingButton(
+        onPressed: () => animate(), animatedIcon: AnimatedIcons.menu_close, animation: _animateIcon, key: widget.key,));
     return Column(
         mainAxisAlignment: MainAxisAlignment.end, children: columnWidgets);
   }

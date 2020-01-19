@@ -9,36 +9,38 @@ class CustomButton extends StatelessWidget {
 
   CustomButton(
       {@required this.formKey,
-        this.onPressed,
-        this.snackBarMessage,
-        this.text,
-        this.icon});
+      this.onPressed,
+      this.snackBarMessage,
+      this.text,
+      this.icon,
+      key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => Container(
-    padding: EdgeInsets.all(20),
-    width: double.infinity,
-    child: RaisedButton(
-      padding: EdgeInsets.all(8.0),
-      color: Colors.white,
-      elevation: 10,
-      shape:
-      RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-      onPressed: () {
-        if (formKey.currentState.validate()) {
-          onPressed();
-          Scaffold.of(context)
-              .showSnackBar(SnackBar(content: Text(snackBarMessage)));
-        }
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(text,
-              style: TextStyle(fontSize: 20, color: Colors.grey[700])),
-          Icon(icon, color: Colors.grey[700])
-        ],
-      ),
-    ),
-  );
+        padding: EdgeInsets.all(20),
+        width: double.infinity,
+        child: RaisedButton(
+          padding: EdgeInsets.all(8.0),
+          color: Colors.white,
+          elevation: 10,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+          onPressed: () {
+            if (formKey.currentState.validate()) {
+              onPressed();
+              Scaffold.of(context)
+                  .showSnackBar(SnackBar(content: Text(snackBarMessage)));
+            }
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(text,
+                  style: TextStyle(fontSize: 20, color: Colors.grey[700])),
+              Icon(icon, color: Colors.grey[700])
+            ],
+          ),
+        ),
+      );
 }

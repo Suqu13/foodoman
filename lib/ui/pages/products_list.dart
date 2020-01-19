@@ -11,13 +11,13 @@ import '../shared_widgets/custom_floating_button.dart';
 class Products extends StatelessWidget {
   static const routeName = '/products';
   final buttons = [
-    CustomFloatingButtonItem(
+    CustomSecondaryFloatingButton(
       onPressed: () => print('search'),
       heroTag: 'search',
       tooltip: 'search',
       icon: FontAwesomeIcons.search,
     ),
-    CustomFloatingButtonItem(
+    CustomSecondaryFloatingButton(
       onPressed: () => print('add'),
       heroTag: 'add',
       tooltip: 'add',
@@ -27,7 +27,8 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        floatingActionButton: CustomFloatingButton(buttons),
+        appBar: AppBar(title: Text("Produkty")),
+        floatingActionButton: CustomAnimatedFloatingButton(buttons: buttons),
         body: CustomBackgroundContainer(child: ProductsTilesList()),
       );
 }
@@ -52,6 +53,12 @@ class ProductsTilesListState extends State<ProductsTilesList> {
     super.dispose();
   }
 
+  handleOnTap({id}) async {
+    await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => ProductDetails(id: id)));
+    productsBloc.fetchAllProductsWithoutFields();
+  }
+
   @override
   Widget build(BuildContext context) => StreamBuilder(
       stream: productsBloc.products,
@@ -59,8 +66,11 @@ class ProductsTilesListState extends State<ProductsTilesList> {
         if (products.hasData) {
           return ListView.builder(
               itemCount: products.data.length,
-              itemBuilder: (context, i) =>
-                  ProductTile(product: products.data[i]));
+              itemBuilder: (context, i) => ProductTile(
+                    product: products.data[i],
+                    key: Key(i.toString()),
+                    onTap: () => handleOnTap(id: products.data[i].id),
+                  ));
         } else {
           return Center(
             child: CircularProgressIndicator(),
@@ -69,39 +79,30 @@ class ProductsTilesListState extends State<ProductsTilesList> {
       });
 }
 
-class ProductTile extends StatefulWidget {
+class ProductTile extends StatelessWidget {
   final Product product;
+  final double elevation;
+  final Function onTap;
 
-  ProductTile({@required this.product});
-
-  @override
-  @override
-  State<StatefulWidget> createState() => ProductTileState();
-}
-
-class ProductTileState extends State<ProductTile> {
-  double _elevation = 10.0;
+  ProductTile({@required this.product, this.elevation = 10, this.onTap, key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => GestureDetector(
         child: Card(
           margin: EdgeInsets.all(10),
-          elevation: _elevation,
+          elevation: elevation,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
           child: InkWell(
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          ProductDetails(id: widget.product.id))),
+              onTap: () => onTap(),
               splashColor: Colors.indigo[500],
               borderRadius: BorderRadius.circular(15.0),
               child: Center(
                 child: Row(
                   children: <Widget>[
                     CustomImage(
-                      image: widget.product.imageUrl,
+                      image: product.imageUrl,
                       height: 100,
                       width: 100,
                     ),
@@ -112,7 +113,7 @@ class ProductTileState extends State<ProductTile> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              widget.product.name.toUpperCase(),
+                              product.name.toUpperCase(),
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Colors.grey[500],
@@ -120,7 +121,7 @@ class ProductTileState extends State<ProductTile> {
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              '${widget.product.allPiecesNumber} szt.',
+                              '${product.allPiecesNumber} szt.',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Colors.grey[500],

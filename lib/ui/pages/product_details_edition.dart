@@ -19,6 +19,7 @@ class ProductDetailsEdition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Edytuj")),
       body: CustomBackgroundContainer(
           child: ProductDetailsEditionBody(product: product)),
     );
@@ -104,23 +105,29 @@ class ProductDetailsEditionBodyState extends State<ProductDetailsEditionBody> {
           return Form(
             key: _formKey,
             child: ListView(
+              key: Key('customTextFieldsFormList'),
               padding:
-                  EdgeInsets.only(top: 40.0, left: 10, right: 10, bottom: 40.0),
+                  EdgeInsets.only(top: 10.0, left: 10, right: 10, bottom: 10.0),
               children: <Widget>[
-                CustomTextFiled(labelText: 'Nazwa', controller: nameController),
-                CustomTextFiled(
+                CustomTextFieldForm(
+                    labelText: 'Nazwa',
+                    controller: nameController,
+                    key: Key('nameCustomFieldForm')),
+                CustomTextFieldForm(
                   labelText: 'Waga [kg]',
                   controller: weightController,
                   numbersOnly: true,
                 ),
-                CustomTextFiled(
+                CustomTextFieldForm(
                   labelText: 'Powierzchnia [cm^2]',
                   controller: surfaceController,
                   numbersOnly: true,
                 ),
-                CustomTextFiled(
-                    labelText: 'Wysokość [cm]', controller: heightController),
-                CustomTextFiled(
+                CustomTextFieldForm(
+                    labelText: 'Wysokość [cm]',
+                    controller: heightController,
+                    numbersOnly: true),
+                CustomTextFieldForm(
                     labelText: 'Opis produktu',
                     controller: descriptionController),
                 CustomDropdownButton(
@@ -135,7 +142,8 @@ class ProductDetailsEditionBodyState extends State<ProductDetailsEditionBody> {
                     onPressed: () => editProduct(),
                     snackBarMessage: "Zapisano zmiany!",
                     text: "Zapisz",
-                    icon: FontAwesomeIcons.save)
+                    icon: FontAwesomeIcons.save,
+                    key: Key('saveCustomButton'),)
               ],
             ),
           );

@@ -26,7 +26,7 @@ class ProductLocalization extends StatelessWidget {
 class ProductLocalizationBody extends StatefulWidget {
   final int id;
   final buttons = (context) => [
-        CustomFloatingButtonItem(
+        CustomSecondaryFloatingButton(
           onPressed: () => Alert(
               context: context,
               title: 'Jesteś pewien, że chcesz usunąć priorytet?',
@@ -49,13 +49,13 @@ class ProductLocalizationBody extends StatefulWidget {
           tooltip: 'remove',
           icon: FontAwesomeIcons.trash,
         ),
-        CustomFloatingButtonItem(
+        CustomSecondaryFloatingButton(
           onPressed: () => print('edit'),
           heroTag: 'edit',
           tooltip: 'edit',
           icon: FontAwesomeIcons.pen,
         ),
-        CustomFloatingButtonItem(
+        CustomSecondaryFloatingButton(
           onPressed: () => print('add'),
           heroTag: 'add',
           tooltip: 'add',
@@ -134,21 +134,22 @@ class ProductLocalizationBodyState extends State<ProductLocalizationBody>
           (BuildContext context, AsyncSnapshot<List<Priority>> priorities) {
         if (priorities.hasData) {
           return Scaffold(
+            appBar: AppBar(title: Text("Lokalizuj")),
               floatingActionButton:
-                  CustomFloatingButton(widget.buttons(context)),
+                  CustomAnimatedFloatingButton(buttons: widget.buttons(context)),
               body: CustomBackgroundContainer(
                 child: Form(
                   key: _formKey,
                   child: ListView(
                       padding: EdgeInsets.only(
-                          top: 40.0, bottom: 80.0, left: 10, right: 10),
+                          top: 10.0, bottom: 80.0, left: 10, right: 10),
                       children: <Widget>[
                         Center(
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: Text("Wybierz priorytet!",
+                            child: Text("Wybierz priorytet",
                                 style: TextStyle(
-                                    color: Colors.grey[500], fontSize: 30)),
+                                    color: Colors.white, fontSize: 30)),
                           ),
                         ),
                         CustomDropdownButton(
