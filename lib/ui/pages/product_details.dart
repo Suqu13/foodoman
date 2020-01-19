@@ -123,8 +123,8 @@ class ProductDetailsBodyState extends State<ProductDetailsBody> {
         } else {
           return Scaffold(
               appBar: AppBar(),
-        body: CustomBackgroundContainer(
-              child: Center(child: CircularProgressIndicator())));
+              body: CustomBackgroundContainer(
+                  child: Center(child: CircularProgressIndicator())));
         }
       });
 }
@@ -136,6 +136,7 @@ class ProductDetailsBodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListView(
+        key: Key('producerDetailsListView'),
         padding: EdgeInsets.only(top: 10.0, bottom: 80, left: 10, right: 10),
         children: <Widget>[
           Center(
@@ -184,7 +185,7 @@ class ProductDetailsBodyContent extends StatelessWidget {
           CustomTextWithDescription(
               description: 'Opis produktu',
               content: product.description.toString()),
-          DoubleTextWithDoubleDescription(
+          CustomDoubleTextWithDoubleDescription(
               upperDescription: 'Nazwa producenta',
               upperContent: product.producer.name,
               lowerDescription: 'Opis producenta',
@@ -193,17 +194,19 @@ class ProductDetailsBodyContent extends StatelessWidget {
       );
 }
 
-class DoubleTextWithDoubleDescription extends StatelessWidget {
+class CustomDoubleTextWithDoubleDescription extends StatelessWidget {
   final String upperDescription;
   final String upperContent;
   final String lowerDescription;
   final String lowerContent;
 
-  DoubleTextWithDoubleDescription(
+  CustomDoubleTextWithDoubleDescription(
       {@required this.upperDescription,
       this.upperContent,
       this.lowerDescription,
-      this.lowerContent});
+      this.lowerContent,
+      key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => Container(
@@ -220,6 +223,7 @@ class DoubleTextWithDoubleDescription extends StatelessWidget {
                 Text(upperDescription,
                     style: TextStyle(fontSize: 10, color: Colors.grey[700])),
                 Text(upperContent,
+                    key: Key('producerName'),
                     style: TextStyle(fontSize: 15, color: Colors.grey[700])),
                 Padding(padding: EdgeInsets.all(5)),
                 Text(lowerDescription,

@@ -7,7 +7,7 @@ class CustomDropdownButton<T> extends StatelessWidget {
   final List<DropdownMenuItem<T>> items;
 
   CustomDropdownButton(
-      {@required this.onChanged, this.labelText, this.value, this.items});
+      {@required this.onChanged, this.labelText, this.value, this.items, key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Container(

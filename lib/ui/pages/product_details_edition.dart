@@ -78,7 +78,8 @@ class ProductDetailsEditionBodyState extends State<ProductDetailsEditionBody> {
   }
 
   prepareItems(List<Producer> producers) => producers
-      .map((p) => DropdownMenuItem(value: p, child: Text(p.name)))
+      .map((p) => DropdownMenuItem(
+          value: p, child: Text(p.name, key: Key(p.id.toString()))))
       .toList();
 
   editProduct() {
@@ -131,6 +132,7 @@ class ProductDetailsEditionBodyState extends State<ProductDetailsEditionBody> {
                     labelText: 'Opis produktu',
                     controller: descriptionController),
                 CustomDropdownButton(
+                    key: Key('producerCustomDropdownButton'),
                     items: prepareItems(producers.data),
                     onChanged: (value) => setState(() {
                           producer = value;
@@ -138,12 +140,13 @@ class ProductDetailsEditionBodyState extends State<ProductDetailsEditionBody> {
                     labelText: 'Producent',
                     value: producer),
                 CustomButton(
-                    formKey: _formKey,
-                    onPressed: () => editProduct(),
-                    snackBarMessage: "Zapisano zmiany!",
-                    text: "Zapisz",
-                    icon: FontAwesomeIcons.save,
-                    key: Key('saveCustomButton'),)
+                  formKey: _formKey,
+                  onPressed: () => editProduct(),
+                  snackBarMessage: "Zapisano zmiany!",
+                  text: "Zapisz",
+                  icon: FontAwesomeIcons.save,
+                  key: Key('saveCustomButton'),
+                )
               ],
             ),
           );
