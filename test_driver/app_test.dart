@@ -3,6 +3,9 @@ import 'package:test/test.dart';
 
 void main() {
   group('Foodoman App', () {
+    final newName = 'New Name';
+    final producerName = 'Third Producer';
+
     final productsMainMenuButtonFinder = find.byValueKey('products');
     final productTileFinder = find.byValueKey('0');
     final primaryFloatingButton = find.byValueKey('primaryFloatingButton');
@@ -46,13 +49,13 @@ void main() {
     test('provide valid new name and check if exists', () async {
       await driver.runUnsynchronized(() async {
         await driver.tap(nameTextFieldFormFinder);
-        await driver.enterText('Nowa JEDEN');
+        await driver.enterText(newName);
         await driver.scrollUntilVisible(
             customTextFieldsFormListFinder, saveCustomButtonFinder,
             dyScroll: -300.0);
         await driver.tap(saveCustomButtonFinder);
         await driver.tap(backButtonFinder);
-        expect(await driver.getText(productsDetailsNameFinder), 'Nowa JEDEN');
+        expect(await driver.getText(productsDetailsNameFinder), newName);
       });
     });
 
@@ -72,7 +75,7 @@ void main() {
             dyScroll: -300.0);
         await driver.tap(saveCustomButtonFinder);
         await driver.tap(backButtonFinder);
-        expect(await driver.getText(productsDetailsNameFinder), 'Nowa JEDEN');
+        expect(await driver.getText(productsDetailsNameFinder), newName);
       });
     });
 
@@ -99,8 +102,7 @@ void main() {
         await driver.scrollUntilVisible(
             producerDetailsListViewFinder, producerNameFinder,
             dyScroll: -300.0);
-        expect(
-            await driver.getText(producerNameFinder), 'The Coca-Cola Company');
+        expect(await driver.getText(producerNameFinder), producerName);
         await driver.tap(backButtonFinder);
         await driver.tap(backButtonFinder);
       });

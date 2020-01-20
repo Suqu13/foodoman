@@ -144,12 +144,6 @@ class LocalizationTile extends StatelessWidget {
                     description: "Data ważności",
                     content:
                         productSet.expiryDate.toIso8601String().split('T')[0]),
-                simpleNormalTextWithDescription(
-                    description: "Ilość sztuk w lokalizacji",
-                    content: productSet.pieces.toString()),
-                simpleNormalTextWithDescription(
-                    description: "Ilość sztuk w lokalizacji",
-                    content: productSet.pieces.toString()),
                 simpleHighlightedTextWithDescription(
                     description: "Numer regału",
                     content: productSet.rack.number.toString()),

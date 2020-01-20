@@ -11,7 +11,7 @@ class ProducersBloc {
   Stream<List<Producer>> get producers => _producersController.stream;
 
   fetchAllProducers() async {
-    final producers = await _producersService.fetchAllProducts();
+    final producers = await _producersService.fetchAllProducers();
     _producersController.sink.add(producers);
   }
 
