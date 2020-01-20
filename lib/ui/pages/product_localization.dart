@@ -100,16 +100,17 @@ class ProductLocalizationBodyState extends State<ProductLocalizationBody>
       .toList();
 
   handleOnPressed() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => ProductLocalizationList(
-                productId: widget.id,
-                priorityId: _priority?.id,
-                localizeAll: localizeAll)));
+    if (!(_priority == null && !localizeAll))
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ProductLocalizationList(
+                  productId: widget.id,
+                  priorityId: _priority?.id,
+                  localizeAll: localizeAll)));
   }
 
-  handleOmSwitchChanged(bool value) {
+  handleOnSwitchChanged(bool value) {
     setState(() {
       localizeAll = value;
     });
@@ -134,9 +135,9 @@ class ProductLocalizationBodyState extends State<ProductLocalizationBody>
           (BuildContext context, AsyncSnapshot<List<Priority>> priorities) {
         if (priorities.hasData) {
           return Scaffold(
-            appBar: AppBar(title: Text("Lokalizuj")),
-              floatingActionButton:
-                  CustomAnimatedFloatingButton(buttons: widget.buttons(context)),
+              appBar: AppBar(title: Text("Lokalizuj")),
+              floatingActionButton: CustomAnimatedFloatingButton(
+                  buttons: widget.buttons(context)),
               body: CustomBackgroundContainer(
                 child: Form(
                   key: _formKey,
@@ -174,7 +175,7 @@ class ProductLocalizationBodyState extends State<ProductLocalizationBody>
                             fontSize: 15,
                             fontColor: Colors.grey[700],
                             description: "Lokalizuj wszystko",
-                            handleOnChange: handleOmSwitchChanged),
+                            handleOnChange: handleOnSwitchChanged),
                         CustomButton(
                           formKey: _formKey,
                           onPressed: () => handleOnPressed(),
