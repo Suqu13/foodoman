@@ -26,14 +26,16 @@ class CustomTextFieldForm extends StatelessWidget {
                   minLines: 1,
                   maxLines: null,
                   inputFormatters: numbersOnly
-                      ? [WhitelistingTextInputFormatter.digitsOnly]
+                      ? [BlacklistingTextInputFormatter(new RegExp('[\\-|\\ ]'))]
                       : null,
-                  keyboardType: numbersOnly ? TextInputType.number : null,
+                  keyboardType: numbersOnly ? TextInputType.numberWithOptions(decimal: true) : null,
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Pole nie może pozostać puste';
                     } else if (numbersOnly && !isNumeric(value)) {
                       return 'Proszę wprowadzić wartości liczbowe';
+                    } else if(numbersOnly && double.parse(controller.text) <= 0) {
+                      return 'Proszę wprowadzić poprawne wartości liczbowe';
                     }
                     return null;
                   },

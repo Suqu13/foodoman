@@ -9,15 +9,10 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/pages/product_localization.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/pages/product_localization.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/shared_widgets/custom_text_field_form_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/shared_widgets/custom_text_field_form_field.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,14 +25,38 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_29" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/ui/pages/product_localization.dart">
+        <entry file="file://$PROJECT_DIR$/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="107" column="39" lean-forward="true" selection-start-line="107" selection-start-column="39" selection-end-line="107" selection-end-column="39" />
+            <state relative-caret-position="210">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/ui/shared_widgets/custom_text_field_form_field.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/http_services/http_services_impl/priorities_service_impl.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,7 +122,6 @@
         <option value="$PROJECT_DIR$/lib/http_services/http_services_impl/products_service_impl.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/ui/shared_widgets/custom_floating_button.dart" />
-        <option value="$PROJECT_DIR$/lib/ui/shared_widgets/custom_text_field_form_field.dart" />
         <option value="$PROJECT_DIR$/lib/ui/shared_widgets/custom_button.dart" />
         <option value="$PROJECT_DIR$/lib/ui/shared_widgets/custom_backround_container.dart" />
         <option value="$PROJECT_DIR$/lib/ui/pages/main_menu.dart" />
@@ -117,7 +135,6 @@
         <option value="$PROJECT_DIR$/lib/http_services/dummy_services_impl/dummy_products_sets_service_impl.dart" />
         <option value="$PROJECT_DIR$/lib/bloc/locator.dart" />
         <option value="$PROJECT_DIR$/test_driver/app.dart" />
-        <option value="$PROJECT_DIR$/lib/main.dart" />
         <option value="$PROJECT_DIR$/lib/ui/pages/product_localization_list.dart" />
         <option value="$PROJECT_DIR$/test_driver/app_test.dart" />
         <option value="$PROJECT_DIR$/lib/http_services/dummy_services_impl/dummy_producers_service_impl.dart" />
@@ -126,6 +143,8 @@
         <option value="$PROJECT_DIR$/lib/ui/pages/product_details_edition.dart" />
         <option value="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/lib/ui/pages/product_localization.dart" />
+        <option value="$PROJECT_DIR$/lib/ui/shared_widgets/custom_text_field_form_field.dart" />
+        <option value="$PROJECT_DIR$/lib/main.dart" />
       </list>
     </option>
   </component>
@@ -139,9 +158,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="1080" />
-    <option name="width" value="964" />
-    <option name="height" value="1040" />
+    <option name="x" value="240" />
+    <option name="y" value="130" />
+    <option name="width" value="1440" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -151,6 +171,7 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,6 +188,19 @@
               <item name="foodoman" type="b2602c69:ProjectViewProjectNode" />
               <item name="foodoman" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="http_services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="foodoman" type="b2602c69:ProjectViewProjectNode" />
+              <item name="foodoman" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="http_services" type="462c0819:PsiDirectoryNode" />
+              <item name="http_services_impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="foodoman" type="b2602c69:ProjectViewProjectNode" />
+              <item name="foodoman" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -174,13 +208,12 @@
               <item name="foodoman" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="shared_widgets" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -247,11 +280,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="1080" width="1928" height="1044" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.43329775" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32017076" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -260,14 +293,14 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" sideWeight="0.49893278" weight="0.32878152" />
-      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.49893278" visible="true" weight="0.48245615" />
+      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49893278" visible="true" weight="0.29276314" />
       <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.4994664" weight="0.32785088" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3970588" />
-      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.4967033" weight="0.39715537" />
+      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.4967033" weight="0.39692983" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50329673" side_tool="true" weight="0.48245615" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32878152" />
       <window_info anchor="bottom" id="Logcat" order="7" sideWeight="0.4994664" weight="0.32878152" />
-      <window_info active="true" anchor="bottom" id="Messages" order="8" sideWeight="0.49733192" visible="true" weight="0.40460527" />
+      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49733192" visible="true" weight="0.40460527" />
       <window_info anchor="bottom" id="Android Profiler" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="10" weight="0.32894737" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
@@ -414,16 +447,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/http_services/http_services_impl/priorities_service_impl.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" lean-forward="true" selection-end-line="35" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/domain/priority.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -512,16 +535,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_driver/app_test.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-709">
@@ -560,16 +573,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/shared_widgets/custom_text_field_form_field.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -690,8 +693,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/ui/pages/product_localization.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="107" column="39" selection-start-line="107" selection-start-column="39" selection-end-line="107" selection-end-column="39" />
+        <state relative-caret-position="45">
+          <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/shared_widgets/custom_text_field_form_field.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/http_services/http_services_impl/priorities_service_impl.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
